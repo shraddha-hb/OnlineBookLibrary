@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @book.name %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @book.short_description %>
+</p>
+
+<p>
+  <strong>Long description:</strong>
+  <%= @book.long_description %>
+</p>
+
+<p>
+  <strong>Chapter index:</strong>
+  <%= @book.chapter_index %>
+</p>
+
+<p>
+  <strong>Published date:</strong>
+  <%= @book.published_date %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @book.genre %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @book.user.name %>
+</p>
+<% if current_user == @book.user %>
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+<% end %>
+<%= link_to 'Back', books_path %>
+
+
+
+<% if @book.reviews.size > 0 %>
+  <h2>Reviews</h2>
+  <% for review in @book.reviews %>
+    <h3><%= review.title %></h3>
+    <p><%= review.review_description %></p>
+  <% end %>
+<% end %>
+
+<h2>New Review</h2>
+<%= form_for [@book, Review.new] do |f| %>
+  <p><%= f.label :title %> <%= f.text_field :title %></p>
+  <p><%= f.text_area :review_description, :rows => 10 %></p>
+  <% if current_user %>
+    <%= f.hidden_field :reviewer_name, value: current_user.name %>
+  <% else %>
+    <%= f.hidden_field :reviewer_name, value: "Guest" %>
+  <% end %>
+  <p><%= f.submit %></p>
+<% end %>
+
+

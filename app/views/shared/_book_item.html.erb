@@ -1,0 +1,12 @@
+<tr>
+  <td class="micropost">
+    <%= render :partial => 'shared/individual_book', :locals => { :book_item => book_item } %>
+  </td>
+  <% if current_user == book_item.user %>
+    <td>
+      <%= link_to "delete", book_item, :method => :delete,
+                                     :confirm => "You sure?",
+                                     :title => book_item.name %>
+    </td>
+  <% end %>
+</tr>

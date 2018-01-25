@@ -1,0 +1,8 @@
+<span class="user">
+  <%= link_to book_item.user.name, book_item.user %>
+</span>
+<span class="content"><%= wrap(book_item.short_description) %></span>
+<span class="content"><%= wrap(book_item.long_description) %></span>
+<span class="post_timestamp">
+  Published <%= time_ago_in_words(book_item.created_at) %> ago.
+</span>

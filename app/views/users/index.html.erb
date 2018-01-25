@@ -1,0 +1,25 @@
+<h2>Listing users</h2>
+
+<%= paginate @users %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <% if current_user.admin? %>
+        <th></th>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @users.each do |user| %>
+      <%= render user %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>
+<br/>

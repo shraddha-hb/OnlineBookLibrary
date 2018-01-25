@@ -1,0 +1,7 @@
+<% unless @books.empty? %>
+  <table class="microposts" summary="User microposts">
+    <%= render :partial => 'shared/book_item', :collection => @books %>
+  </table>
+  <!-- < %= paginate @books %> -->
+  <br/>
+<% end %>

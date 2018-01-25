@@ -1,0 +1,21 @@
+<table class="profile">
+  <tr>
+    <td class="main">
+      <h2><%= @user.name %></h2>
+      <% if user_signed_in? %>
+        <%=  %>
+        <li> <%= link_to(image_tag(@user.avatar, alt: 'Image'), @user.avatar.url, target: '_blank') if @user.avatar? %></li>
+        <li><%= link_to "Complete Profile", edit_user_path %></li>
+        <li><%= link_to "Add your Book", new_book_path %></li>
+      <% end %>
+      <!-- < %= render 'follow_form' if user_signed_in? %> -->
+      <!-- < %= render 'shared/feed' %> -->
+    </td>
+    <td class="sidebar round">
+      <span><strong>Name</strong> <%= @user.name %></span><br/>
+      <span><strong>URL</strong> <%= link_to user_path(@user), @user.name %></span><br/>
+      <!-- <span><strong>Microposts</strong> < %= link_to @user.microposts.count, user_microposts_path(@user) %></span> -->
+      <!-- < %= render 'shared/stats' %> -->
+    </td>
+  </tr>
+</table>

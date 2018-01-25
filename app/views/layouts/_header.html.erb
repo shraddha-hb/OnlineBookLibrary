@@ -1,0 +1,19 @@
+<header>
+  <% logo = image_tag("logo.png", :alt => "Sample App", :class => "round") %>
+  <%= link_to logo, root_path %>
+  <nav class="round">
+    <ul>
+      <li><%= link_to "Home", :root %></li>
+      <li><%= link_to "Help", :help %></li>
+      <li><%= link_to "Browse Books", books_path %></li>
+      <% unless user_signed_in? %>
+      	<li><%= link_to "Sign in", new_user_session_path %></li>
+      <% else %>        
+      	<li><%= link_to "Profile", current_user %></li>
+        <li><%= link_to "Your Books", books_path %></li>
+        <li><%= link_to "Settings", edit_user_registration_path %></li>
+      	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

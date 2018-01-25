@@ -1,0 +1,53 @@
+<%= form_with(model: book, local: true) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :book_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :short_description %>
+    <%= form.text_area :short_description, id: :book_short_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :long_description %>
+    <%= form.text_area :long_description, id: :book_long_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chapter_index %>
+    <%= form.number_field :chapter_index, id: :book_chapter_index %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_date %>
+    <%= form.text_field :published_date, id: :book_published_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :genre %>
+    <%= form.text_field :genre, id: :book_genre %>
+  </div>
+
+  <div class="field">
+    <!-- < %= form.hidden_field :book_user_id, value: current_user%> -->
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :book_user_id ,value: current_user.id%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

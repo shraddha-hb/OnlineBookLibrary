@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="micropost">Welcome To Online Book Library!</h1>
+       <!--  < %= render 'shared/micropost_form' %>-->
+        <%= render 'shared/book_lists' %> 
+      </td>
+      <td class="sidebar round">
+        <!-- < %= render 'shared/user_info' %>
+        < %= render 'shared/stats' %> -->
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <%= render 'welcome' %>
+<% end %>
